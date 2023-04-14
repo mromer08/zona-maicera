@@ -64,4 +64,21 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# zona-maicera
+
+# HOW TO RUN THIS PROJECT
+
+run this commands
+
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan config:cache
+php artisan config:clear 
+php artisan cache:clear
+
+npm i
+npm run dev
+
+php artisan migrate:refresh --seed
+```
