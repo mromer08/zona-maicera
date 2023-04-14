@@ -13,7 +13,7 @@ class ScoreController extends Controller
     public function index(Request $request)
     {
         // Obtener todos los scores de la base de datos
-        $scores = Score::all();
+        $scores = Score::orderBy('total', 'desc')->get();
 
         // Retornar la vista con los scores
         return view('scores', ['scores' => $scores]);

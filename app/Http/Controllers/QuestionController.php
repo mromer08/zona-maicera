@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
+use App\Models\Score;
+use App\Models\User;
 use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -57,7 +59,30 @@ class QuestionController extends Controller
         if ($nextQuestion) {
             return view('game', ['question' => $nextQuestion]);
         }
-        return redirect()->route('scores.store');
+        // if (auth()->check()) {
+        //     // Crear una nueva instancia de Score y asignar los valores apropiados
+        //     $score = new Score([
+        //         'game_id' => 1,
+        //         'total' => $request->session()->get('score'),
+        //     ]);
+        //     $score->user()->associate(auth()->user());
+        //     $score->save();
+
+        // }
+        if (auth()->check()) {
+            $user = auth()->user();
+        
+            // Buscar la puntuación del usuario para el juego 1
+            $score = $user->score()->where('game_id', 1)->firstOrNew(['game_id' => 1]);
+        
+            // Actualizar el total
+            $score->total = $request->session()->get('score');
+        
+            // Guardar los cambios
+            $score->save();
+        }
+        
+        return redirect()->route('scores.index');
     }
 
 

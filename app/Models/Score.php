@@ -9,7 +9,7 @@ class Score extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['total'];
+    protected $fillable = ['total', 'game_id'];
 
     public function game()
     {
