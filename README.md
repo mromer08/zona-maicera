@@ -3,7 +3,7 @@ You can read all the documentation about the design of this project [here](https
 
 # HOW TO RUN THIS PROJECT
 
-run this commands
+run this commands, you must have `php`, `composer`, `laravel`, `mysql` already installed.
 
 ```bash
 composer install
